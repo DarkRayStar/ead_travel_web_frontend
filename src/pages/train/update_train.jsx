@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 //Update Train   schedules  page
-const Trupp = () => {
+const UpdateSchedule = () => {
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState();
 
@@ -258,4 +258,4 @@ const Trupp = () => {
   );
 };
 
-export default Trupp;
+export default UpdateSchedule;

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 //Create Train   schedules  page
-const Tradd = () => {
+const CreateSchedule = () => {
   const navigate = useNavigate();
   const initialValues = {
     trainId: "",
@@ -33,7 +33,6 @@ const Tradd = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
-
     let data = {
       trainId: values.trainId,
       trainName: values.trainName,
@@ -42,12 +41,12 @@ const Tradd = () => {
       isActive: true,
       scheduleList: [
         {
-            starttime:values.starttime,
-            day: values.day,
-            startStationName:values.start,
-            endStationName:values.end
-        }
-    ]
+          starttime: values.starttime,
+          day: values.day,
+          startStationName: values.start,
+          endStationName: values.end,
+        },
+      ],
     };
 
     try {
@@ -248,4 +247,4 @@ const Tradd = () => {
   );
 };
 
-export default Tradd;
+export default CreateSchedule;

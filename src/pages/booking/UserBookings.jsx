@@ -1,40 +1,44 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
-
-//VIEW Trains
-const TrView = () => {
+//VIEW All  booking for 1 traveler
+const UserBookings = () => {
+  const { id } = useParams();
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
 
   const getData = () => {
     axios
-      .get("http://localhost:44334/api/Train")
+      .get("http://localhost:44334/api/Reservation/" + id)
       .then((response) => {
         const fetchedData = response.data;
-        setTr(fetchedData);
+        const filteredData = fetchedData.filter((item) => !item.isCancelled);
+        setTr(filteredData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   };
   useEffect(() => {
-    localStorage.removeItem("train");
+    localStorage.removeItem("trav");
     getData();
   }, []);
 
   const handleDelete = (itemId) => {
-    console.log(itemId);
+    let data = {
+      isCancelled: true,
+    };
     axios
-      .delete(`http://localhost:44334/api/TravelerProfile/${itemId}`)
+      .put(`http://localhost:44334/api/Reservation/${itemId}`, data)
       .then((response) => {
         Swal.fire({
           icon: "success",
           title: "Success!",
-          text: "Train Deleted.",
+          text: "Booking Deleted.",
         }).then(() => {
           getData();
         });
@@ -51,25 +55,24 @@ const TrView = () => {
   const handleUpdate = (item) => {
     try {
       const arrayString = JSON.stringify(item);
-      localStorage.setItem("train", arrayString);
+      localStorage.setItem("trav", arrayString);
     } catch (e) {
     } finally {
-      navigate("/trupp");
+      navigate("/dashboard/booking/update");
     }
   };
-
   return (
     <div
       style={{ marginTop: "150px" }}
       className="d-flex flex-column justify-content-center align-items-center"
     >
-      <h3>All Active Trains</h3>
+      <h3>All Active Bookings of User</h3>
       <br />
       {tr &&
         tr.map((item) => (
           <Card
             className="shadow"
-            style={{ height: "480px", width: "500px", marginBottom: "100px" }}
+            style={{ height: "430px", width: "500px", marginBottom: "100px" }}
             key={item.id}
           >
             <Card.Body>
@@ -77,15 +80,13 @@ const TrView = () => {
                 className="d-flex flex-column justify-content-center align-items-center"
                 style={{ marginTop: "5px" }}
               >
-                <h5>Train Name: {item.trainName}</h5>
+                <h5>Ref ID: {item.referenceId}</h5>
                 <br />
-                <h5>Compartment: {item.numberOfComponents}</h5>
+                <h5>Name: {item.travallerName}</h5>
                 <br />
-                <h5>Start: {item.scheduleList[0].startStationName}</h5>
+                <h5>Date: {item.reservationDate}</h5>
                 <br />
-                <h5>End: {item.scheduleList[0].endStationName}</h5>
-                <br />
-                <h5>Time: {item.scheduleList[0].starttime}</h5>
+                <h5>Passengers: {item.noOfPassenger}</h5>
                 <br />
                 <Button
                   className="btn btn-blue"
@@ -109,4 +110,4 @@ const TrView = () => {
   );
 };
 
-export default TrView;
+export default UserBookings;

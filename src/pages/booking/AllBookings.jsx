@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-
-//VIEW Travelers
-const Busers = () => {
-  const [acc, setAcc] = useState([]);
+//VIEW All  booking
+const AllBookings = () => {
+  const [tr, setTr] = useState([]);
   const navigate = useNavigate();
 
   const getData = () => {
     axios
-      .get("http://localhost:44334/api/TravelerProfile?isActive=true")
+      .get("http://localhost:44334/api/Reservation")
       .then((response) => {
         const fetchedData = response.data;
-        setAcc(fetchedData);
+        setTr(fetchedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -25,20 +23,18 @@ const Busers = () => {
     getData();
   }, []);
 
- 
-
   return (
     <div
       style={{ marginTop: "150px" }}
       className="d-flex flex-column justify-content-center align-items-center"
     >
-      <h3>Travelers</h3>
+      <h3>All Active Bookings</h3>
       <br />
-      {acc &&
-        acc.map((item) => (
+      {tr &&
+        tr.map((item) => (
           <Card
             className="shadow"
-            style={{ height: "380px", width: "500px", marginBottom: "100px" }}
+            style={{ height: "280px", width: "500px", marginBottom: "100px" }}
             key={item.id}
           >
             <Card.Body>
@@ -46,25 +42,14 @@ const Busers = () => {
                 className="d-flex flex-column justify-content-center align-items-center"
                 style={{ marginTop: "5px" }}
               >
-                <h5>First Name: {item.firstName}</h5>
+                <h5>Ref ID: {item.referenceId}</h5>
                 <br />
-                <h5>Last Name: {item.lastName}</h5>
+                <h5>Name: {item.travallerName}</h5>
                 <br />
-                <h5>NIC: {item.nic}</h5>
+                <h5>Date: {item.reservationDate}</h5>
                 <br />
-                <Button
-                  className="btn btn-blue"
-                  onClick={() => navigate(`/badd/${item.id}/${item.nic}`)}
-                >
-                  Create Booking
-                </Button>
+                <h5>Passengers: {item.noOfPassenger}</h5>
                 <br />
-                <Button
-                  className="btn btn-green"
-                  onClick={() => navigate(`/bviews/${item.nic}`)}
-                >
-                  View Bookings
-                </Button>
               </div>
             </Card.Body>
           </Card>
@@ -74,4 +59,4 @@ const Busers = () => {
   );
 };
 
-export default Busers;
+export default AllBookings;

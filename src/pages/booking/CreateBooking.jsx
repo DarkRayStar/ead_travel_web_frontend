@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 
 //Create Booking  page
-const Badd = () => {
+const CreateBooking = () => {
   const { id, nic } = useParams();
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
@@ -162,7 +162,9 @@ const Badd = () => {
                         >
                           {tr &&
                             tr.map((item) => (
-                              <option key={item.id }  value={item.id}>{item.trainName}</option>
+                              <option key={item.id} value={item.id}>
+                                {item.trainName}
+                              </option>
                             ))}
                         </Field>
                         <ErrorMessage
@@ -229,4 +231,4 @@ const Badd = () => {
   );
 };
 
-export default Badd;
+export default CreateBooking;

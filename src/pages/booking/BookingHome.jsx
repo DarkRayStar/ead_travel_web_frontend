@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 
-const Bhome = () => {
+const Bookinghome = () => {
   const navigate = useNavigate();
 
   return (
@@ -58,4 +58,4 @@ const Bhome = () => {
   );
 };
 
-export default Bhome;
+export default Bookinghome;
