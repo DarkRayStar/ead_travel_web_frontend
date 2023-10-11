@@ -8,7 +8,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import MainLoader from "../../components/loader/Loader";
 
 //Traveler accounts deactivate
-const TViewA = () => {
+const TravelerAccoutnStatus = () => {
   const [acc, setAcc] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ const TViewA = () => {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center my-5">
+    <div className="d-flex flex-column justify-content-center align-items-center my-5 px-5">
       <MainLoader show={loading} />
       <h2 style={{ color: "white" }}>All Activated Accounts</h2>
 
@@ -112,4 +112,4 @@ const TViewA = () => {
   );
 };
 
-export default TViewA;
+export default TravelerAccoutnStatus;

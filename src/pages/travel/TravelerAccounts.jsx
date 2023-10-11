@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 //Traveler account cration  page
-const Tacc = () => {
+const TravelerAccountCreate = () => {
   const navigate = useNavigate();
   const initialValues = {
     firstName: "",
@@ -68,16 +68,12 @@ const Tacc = () => {
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-    >
-      <Card
-        className="shadow px-5 my-5"
-      >
+    <div className="d-flex justify-content-center align-items-center">
+      <Card className="shadow px-5 my-5">
         <Card.Body>
           <Row>
             <Col className="fixed ">
-            <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex justify-content-center align-items-center">
                 <h3 className="topic">Traveler Account</h3>
               </div>
               <Formik
@@ -230,4 +226,4 @@ const Tacc = () => {
   );
 };
 
-export default Tacc;
+export default TravelerAccountCreate;

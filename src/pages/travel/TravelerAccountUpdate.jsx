@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 
 //Traveler account update  page
-const Tupp = () => {
+const TravelerAccountUpdate = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState();
@@ -178,4 +178,4 @@ const Tupp = () => {
   );
 };
 
-export default Tupp;
+export default TravelerAccountUpdate;

@@ -6,10 +6,10 @@ import Home from "./pages/home/home";
 import Thome from "./pages/travel/traveler_home";
 import Trhome from "./pages/train/train_home";
 import Bhome from "./pages/booking/booking_home";
-import Tacc from "./pages/travel/traveler_account";
+import Tacc from "./pages/travel/TravelerAccounts";
 import Tradd from "./pages/train/add_train";
-import TView from "./pages/travel/taveler_view";
-import Tupp from "./pages/travel/traveler_update";
+import TView from "./pages/travel/TravelerAccountView";
+import Tupp from "./pages/travel/TravelerAccountUpdate";
 import TViewA from "./pages/travel/traveler_status_a";
 import TViewD from "./pages/travel/traveler_status_d";
 import TrView from "./pages/train/view_train";
@@ -22,6 +22,10 @@ import Bup from "./pages/booking/update_booking";
 import MainLayout from "./layouts/MainLayout";
 import SecondaryLayout from "./layouts/secondary-layout/SecondaryLayout";
 import Travellerhome from "./pages/travel/traveler_home";
+import TravelerAccountCreate from "./pages/travel/TravelerAccounts";
+import TravelerAccountView from "./pages/travel/TravelerAccountView";
+import TravelerAccountUpdate from "./pages/travel/TravelerAccountUpdate";
+import TravelerAccoutnStatus from "./pages/travel/traveler_status_a";
 
 function App() {
   return (
@@ -34,10 +38,22 @@ function App() {
             <Route index element={<Travellerhome />} />
 
             <Route path="traveller" element={<Travellerhome />} />
-            <Route path="traveller/create-acc" element={<Tacc />} />
-            <Route path="traveller/view-acc" element={<TView />} />
-            <Route path="traveller/view-acc/:id" element={<Tupp />} />
-            <Route path="traveller/stats-acc" element={<TViewA />} />
+            <Route
+              path="traveller/create-acc"
+              element={<TravelerAccountCreate />}
+            />
+            <Route
+              path="traveller/view-acc"
+              element={<TravelerAccountView />}
+            />
+            <Route
+              path="traveller/view-acc/:id"
+              element={<TravelerAccountUpdate />}
+            />
+            <Route
+              path="traveller/stats-acc"
+              element={<TravelerAccoutnStatus />}
+            />
 
             <Route path="booking" element={<Bhome />} />
             <Route path="booking/add" element={<Busers />} />
