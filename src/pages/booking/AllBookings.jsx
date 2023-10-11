@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import MainLoader from '../../components/loader/Loader';
 
 //VIEW All  booking
-const BView = () => {
+const AllBookings = () => {
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -106,4 +106,4 @@ const BView = () => {
   );
 };
 
-export default BView;
+export default AllBookings;

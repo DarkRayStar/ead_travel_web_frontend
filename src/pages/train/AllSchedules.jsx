@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import MainLoader from '../../components/loader/Loader';
 
 //VIEW Trains
-const TrView = () => {
+const AllSchedules = () => {
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ const TrView = () => {
       localStorage.setItem('train', arrayString);
     } catch (e) {
     } finally {
-      navigate('/trupp');
+      navigate('/dashboard/scheduling/update');
     }
   };
 
@@ -128,55 +128,7 @@ const TrView = () => {
         </Row>
       </Container>
     </div>
-
-    // <div
-    //   style={{ marginTop: "150px" }}
-    //   className="d-flex flex-column justify-content-center align-items-center"
-    // >
-    //   <h3>All Active Trains</h3>
-    //   <br />
-    //   {tr &&
-    //     tr.map((item) => (
-    //       <Card
-    //         className="shadow"
-    //         style={{ height: "480px", width: "500px", marginBottom: "100px" }}
-    //         key={item.id}
-    //       >
-    //         <Card.Body>
-    //           <div
-    //             className="d-flex flex-column justify-content-center align-items-center"
-    //             style={{ marginTop: "5px" }}
-    //           >
-    //             <h5>Train Name: {item.trainName}</h5>
-    //             <br />
-    //             <h5>Compartment: {item.numberOfComponents}</h5>
-    //             <br />
-    //             <h5>Start: {item.scheduleList[0].startStationName}</h5>
-    //             <br />
-    //             <h5>End: {item.scheduleList[0].endStationName}</h5>
-    //             <br />
-    //             <h5>Time: {item.scheduleList[0].starttime}</h5>
-    //             <br />
-    //             <Button
-    //               className="btn btn-blue"
-    //               onClick={() => handleUpdate(item)}
-    //             >
-    //               Update
-    //             </Button>
-    //             <br />
-    //             <Button
-    //               className="btn btn-red"
-    //               onClick={() => handleDelete(item.id)}
-    //             >
-    //               Delete
-    //             </Button>
-    //           </div>
-    //         </Card.Body>
-    //       </Card>
-    //     ))}
-    //   <div style={{ marginBottom: "600px" }}></div>
-    // </div>
   );
 };
 
-export default TrView;
+export default AllSchedules;

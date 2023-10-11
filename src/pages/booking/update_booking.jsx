@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 //Update Booking  page
-const Bup = () => {
+const BookingUpdate = () => {
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState();
@@ -234,4 +234,4 @@ const Bup = () => {
   );
 };
 
-export default Bup;
+export default BookingUpdate;

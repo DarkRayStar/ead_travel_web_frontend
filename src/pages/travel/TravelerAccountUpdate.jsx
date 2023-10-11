@@ -1,55 +1,65 @@
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
-//Traveler account cration  page
-const Tacc = () => {
+//Traveler account update  page
+const TravelerAccountUpdate = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const initialValues = {
-    firstName: '',
-    lastName: '',
-    nic: '',
-    phone: '',
-    password: '',
-  };
+  const [initialValues, setInitialValues] = useState();
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:44334/api/TravelerProfile/' + id)
+      .then((response) => {
+        const dt = response.data;
+        const data = {
+          firstName: dt.firstName,
+          lastName: dt.lastName,
+          phone: dt.phoneNumber,
+          id: dt.id,
+          nic: dt.nic,
+          accStatus: dt.accStatus,
+          createdDate: dt.createdDate,
+        };
+        setInitialValues(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First name is required'),
     lastName: Yup.string().required('Last name is required'),
-    nic: Yup.string().required('NIC is required'),
     phone: Yup.string().required('Phone number is required'),
-    password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
-      .required('Password is required'),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     let data = {
-      Nic: values.nic,
-      FirstName: values.firstName,
-      LastName: values.lastName,
+      id: values.id,
+      nic: values.nic,
+      firstName: values.firstName,
+      lastName: values.lastName,
       PhoneNumber: values.phone,
-      AccStatus: true,
-      UserInfo: {
-        Password: values.password,
-        Role: 'traveler',
-      },
+      accStatus: values.accStatus,
+      createdDate: values.createdDate,
     };
 
     try {
-      const response = await axios.post('http://localhost:44334/api/TravelerProfile', data);
+      const response = await axios.post('http://localhost:44334/api/TravelerProfile/', data);
       if (response.status === 200) {
         Swal.fire({
           icon: 'success',
           title: 'Success!',
-          text: 'Account created.',
+          text: 'Account Updated.',
         }).then(() => {
           navigate('/thome');
         });
@@ -65,15 +75,19 @@ const Tacc = () => {
   };
 
   return (
-    <div className='d-flex justify-content-center align-items-center'>
-      <Card className='shadow px-5 my-5'>
+    <div
+      className='d-flex justify-content-center align-items-center'
+      style={{ minHeight: '100vh' }}
+    >
+      <Card className='shadow' style={{ height: '480px', width: '800px', marginTop: '40px' }}>
         <Card.Body>
           <Row>
-            <Col>
+            <Col className='fixed '>
               <div className='d-flex justify-content-center align-items-center'>
-                <h3 className='topic'>Traveler Account</h3>
+                <h3 className='topic'>Traveler Account Update</h3>
               </div>
               <Formik
+                enableReinitialize={true}
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleSubmit}
@@ -83,10 +97,10 @@ const Tacc = () => {
                     <Form>
                       <div className='form-group'>
                         <Row>
-                          <Col className='pe-5'>
+                          <Col className='d-flex align-items-center'>
                             <label htmlFor='firstName'>First Name</label>
                           </Col>
-                          <Col className='ps-5'>
+                          <Col>
                             <Field
                               type='text'
                               name='firstName'
@@ -102,10 +116,9 @@ const Tacc = () => {
                           </Col>
                         </Row>
                       </div>
-
                       <div className='form-group'>
                         <Row>
-                          <Col>
+                          <Col className='d-flex align-items-center'>
                             <label htmlFor='lastName'>Last Name</label>
                           </Col>
                           <Col>
@@ -123,25 +136,7 @@ const Tacc = () => {
 
                       <div className='form-group'>
                         <Row>
-                          <Col>
-                            <label htmlFor='nic'>NIC</label>
-                          </Col>
-                          <Col>
-                            <Field
-                              type='text'
-                              name='nic'
-                              id='nic'
-                              style={{ width: '400px' }}
-                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
-                            />
-                            <ErrorMessage name='nic' component='div' className='text-danger' />
-                          </Col>
-                        </Row>
-                      </div>
-
-                      <div className='form-group'>
-                        <Row>
-                          <Col>
+                          <Col className='d-flex align-items-center'>
                             <label htmlFor='phone'>Phone Number</label>
                           </Col>
                           <Col>
@@ -157,34 +152,12 @@ const Tacc = () => {
                         </Row>
                       </div>
 
-                      <div className='form-group'>
-                        <Row>
-                          <Col>
-                            <label htmlFor='password'>Password</label>
-                          </Col>
-                          <Col>
-                            <Field
-                              type='password'
-                              name='password'
-                              id='password'
-                              style={{ width: '400px' }}
-                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
-                            />
-                            <ErrorMessage name='password' component='div' className='text-danger' />
-                          </Col>
-                        </Row>
-                      </div>
-
-                      <div className='d-flex justify-content-center align-items-center pt-4'>
-                        <Button
-                          type='submit'
-                          className='btn btn-gold mb-4'
-                          disabled={isSubmitting}
-                          style={{ width: '600px' }}
-                        >
+                      <div className='d-flex justify-content-center align-items-center mt-5'>
+                        <Button type='submit' className='btn btn-gold' disabled={isSubmitting}>
                           {isSubmitting ? 'Submitting...' : 'Submit'}
                         </Button>
                       </div>
+                      <br />
                     </Form>
                   </div>
                 )}
@@ -197,4 +170,4 @@ const Tacc = () => {
   );
 };
 
-export default Tacc;
+export default TravelerAccountUpdate;

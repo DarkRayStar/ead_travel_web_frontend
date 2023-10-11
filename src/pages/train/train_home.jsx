@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 
 //Navigation for Train schedules
-const Trhome = () => {
+const ScheduleHome = () => {
   const navigate = useNavigate();
 
   return (
@@ -72,4 +72,4 @@ const Trhome = () => {
   );
 };
 
-export default Trhome;
+export default ScheduleHome;

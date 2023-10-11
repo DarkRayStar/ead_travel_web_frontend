@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
-import './traveler_home.scss';
 
-const Travellerhome = () => {
-  const [role, setRole] = useState('');
+const Bookinghome = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const role = localStorage.getItem('role');
-    setRole(role);
-  }, []);
 
   return (
     <div
@@ -20,6 +13,7 @@ const Travellerhome = () => {
       style={{ minHeight: '100vh' }}
     >
       <Card
+        className='shadow'
         style={{
           height: '480px',
           width: '800px',
@@ -36,47 +30,38 @@ const Travellerhome = () => {
           <Row>
             <Col className='fixed '>
               <div className='d-flex justify-content-center align-items-center'>
-                <h3 className='topic fw-bold mt-5 mb-1'> Account Management</h3>
+                <h3 className='topic fw-bold mt-5 mb-1'>Booking Management</h3>
               </div>
 
               <div
                 className='d-flex justify-content-center align-items-center'
-                style={{ marginTop: '50px' }}
+                style={{ marginTop: '40px' }}
               >
                 {/* <Button
                   className="btn btn-blue"
-                  onClick={() => navigate("/tacc")}
+                  onClick={() => navigate("/buse")}
                 >
-                  Create Account
+                  Add Booking
                 </Button>
+                <br />
                 <Button
                   className="btn btn-green"
-                  onClick={() => navigate("/tview")}
+                  onClick={() => navigate("/bview")}
                 >
-                  View All
+                  View All Bookings
                 </Button> */}
                 <div
                   className='squareBtn d-flex justify-content-center align-items-center'
-                  onClick={() => navigate('/dashboard/traveller/create-acc')}
+                  onClick={() => navigate('/dashboard/booking/add')}
                 >
-                  <p>Create Account</p>
+                  <p> Add Booking</p>
                 </div>
                 <div
                   className='squareBtn d-flex justify-content-center align-items-center'
-                  onClick={() => navigate('/dashboard/traveller/view-acc')}
+                  onClick={() => navigate('/dashboard/booking/view')}
                 >
-                  <p>View All </p>
+                  <p>View All Bookings </p>
                 </div>
-                {role == 'officer' ? (
-                  <div
-                    className='squareBtn d-flex justify-content-center align-items-center'
-                    onClick={() => navigate('/dashboard/traveller/stats-acc')}
-                  >
-                    <p>Account Status </p>
-                  </div>
-                ) : (
-                  ''
-                )}
               </div>
             </Col>
           </Row>
@@ -86,4 +71,4 @@ const Travellerhome = () => {
   );
 };
 
-export default Travellerhome;
+export default Bookinghome;

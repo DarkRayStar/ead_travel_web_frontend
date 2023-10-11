@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 //Create Booking  page
-const Badd = () => {
+const CreateBooking = () => {
   const { id, nic } = useParams();
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
@@ -242,4 +242,4 @@ const Badd = () => {
   );
 };
 
-export default Badd;
+export default CreateBooking;

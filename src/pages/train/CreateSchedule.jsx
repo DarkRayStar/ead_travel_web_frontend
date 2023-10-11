@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 //Create Train   schedules  page
-const Tradd = () => {
+const CreateSchedule = () => {
   const navigate = useNavigate();
   const initialValues = {
     trainId: '',
@@ -247,4 +247,4 @@ const Tradd = () => {
   );
 };
 
-export default Tradd;
+export default CreateSchedule;
