@@ -8,7 +8,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import MainLoader from "../../components/loader/Loader";
 
 //VIEW Traveler accounts
-const TView = () => {
+const TravelerAccountView = () => {
   const [acc, setAcc] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -114,4 +114,4 @@ const TView = () => {
   );
 };
 
-export default TView;
+export default TravelerAccountView;

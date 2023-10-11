@@ -1,5 +1,5 @@
 import React from "react";
-import { ClipLoader } from "react-spinners";
+import { PulseLoader } from "react-spinners";
 import "./Loader.scss";
 
 const MainLoader = ({ show }) => {
@@ -7,7 +7,7 @@ const MainLoader = ({ show }) => {
     <>
       {show && (
         <div className="spinnerContainer w-100 h-100 d-flex align-items-center justify-content-center">
-          <ClipLoader color="gray" size={80} />
+          <PulseLoader color="gray" size={15} />
         </div>
       )}
     </>
