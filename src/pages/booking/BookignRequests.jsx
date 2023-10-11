@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
-//Traveler accounts activate
-const TViewD = () => {
+//VIEW Travelers
+const BookingRequests = () => {
   const [acc, setAcc] = useState([]);
   const navigate = useNavigate();
+
   const getData = () => {
     axios
-      .get("http://localhost:44334/api/TravelerProfile?isActive=false")
+      .get("http://localhost:44334/api/TravelerProfile?isActive=true")
       .then((response) => {
-        console.log(response.data);
         const fetchedData = response.data;
         setAcc(fetchedData);
       })
@@ -25,43 +24,12 @@ const TViewD = () => {
     getData();
   }, []);
 
-  const handleDelete = (itemId) => {
-    let data = {
-      AccStatus: true,
-    };
-    axios
-      .put(`http://localhost:44334/api/TravelerProfile/${itemId}`, data)
-      .then((response) => {
-        Swal.fire({
-          icon: "success",
-          title: "Success!",
-          text: "Activated.",
-        }).then(() => {
-          navigate(`/tviewa`);
-        });
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Error!",
-          text: "Failed.",
-        });
-      });
-  };
-
-  if (acc === undefined || acc.length == 0) {
-  }
-
   return (
     <div
       style={{ marginTop: "150px" }}
       className="d-flex flex-column justify-content-center align-items-center"
     >
-      <h3>All Deactivated Accounts</h3>
-      <br />
-      <Button className="btn btn-green" onClick={() => navigate(`/tviewa`)}>
-        View Activated
-      </Button>
+      <h3>Travelers</h3>
       <br />
       {acc &&
         acc.map((item) => (
@@ -81,20 +49,30 @@ const TViewD = () => {
                 <br />
                 <h5>NIC: {item.nic}</h5>
                 <br />
-                <br />
                 <Button
                   className="btn btn-blue"
-                  onClick={() => handleDelete(item.nic)}
+                  onClick={() =>
+                    navigate(`/dashboard/booking/${item.id}/${item.nic}`)
+                  }
                 >
-                  Actiavte Account
+                  Create Booking
+                </Button>
+                <br />
+                <Button
+                  className="btn btn-green"
+                  onClick={() =>
+                    navigate(`/dashboard/booking/user/${item.nic}`)
+                  }
+                >
+                  View Bookings
                 </Button>
               </div>
             </Card.Body>
           </Card>
         ))}
-      <div style={{ marginBottom: "600px" }}></div>
+      <div style={{ marginBottom: "500px" }}></div>
     </div>
   );
 };
 
-export default TViewD;
+export default BookingRequests;

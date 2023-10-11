@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./traveler_home.scss";
 
-const Travellerhome = () => {
+const Travelerhome = () => {
   const [role, setRole] = useState("");
   const navigate = useNavigate();
 
@@ -15,17 +15,6 @@ const Travellerhome = () => {
     setRole(role);
   }, []);
 
-  // let componentToRender;
-
-  // if (role == "officer") {
-  //   componentToRender = (
-  //     <Button className="btn btn-orange" onClick={() => navigate("/tviewa")}>
-  //       Account Status
-  //     </Button>
-  //   );
-  // } else {
-  //   componentToRender = <div></div>;
-  // }
   return (
     <div
       className="d-flex justify-content-center align-items-center"
@@ -43,18 +32,6 @@ const Travellerhome = () => {
                 className="d-flex justify-content-center align-items-center"
                 style={{ marginTop: "50px" }}
               >
-                {/* <Button
-                  className="btn btn-blue"
-                  onClick={() => navigate("/tacc")}
-                >
-                  Create Account
-                </Button>
-                <Button
-                  className="btn btn-green"
-                  onClick={() => navigate("/tview")}
-                >
-                  View All
-                </Button> */}
                 <div
                   className="squareBtn d-flex justify-content-center align-items-center"
                   onClick={() => navigate("/dashboard/traveller/create-acc")}
@@ -86,4 +63,4 @@ const Travellerhome = () => {
   );
 };
 
-export default Travellerhome;
+export default Travelerhome;

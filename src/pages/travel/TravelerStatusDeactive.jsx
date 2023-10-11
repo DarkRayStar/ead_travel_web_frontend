@@ -1,46 +1,43 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 import Swal from "sweetalert2";
-//VIEW All  booking for 1 traveler
-const BViews = () => {
-  const { id } = useParams();
-  const [tr, setTr] = useState([]);
-  const navigate = useNavigate();
+import { useNavigate } from "react-router-dom";
 
+//Traveler accounts activate
+const TravelerAccountStatusDeactive = () => {
+  const [acc, setAcc] = useState([]);
+  const navigate = useNavigate();
   const getData = () => {
     axios
-      .get("http://localhost:44334/api/Reservation/"+id)
+      .get("http://localhost:44334/api/TravelerProfile?isActive=false")
       .then((response) => {
+        console.log(response.data);
         const fetchedData = response.data;
-        const filteredData = fetchedData.filter((item) => !item.isCancelled);
-        setTr(filteredData);
+        setAcc(fetchedData);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   };
   useEffect(() => {
-    localStorage.removeItem("trav");
     getData();
   }, []);
 
   const handleDelete = (itemId) => {
     let data = {
-      "isCancelled": true
-    }
+      AccStatus: true,
+    };
     axios
-      .put(`http://localhost:44334/api/Reservation/${itemId}`,data)
+      .put(`http://localhost:44334/api/TravelerProfile/${itemId}`, data)
       .then((response) => {
         Swal.fire({
           icon: "success",
           title: "Success!",
-          text: "Booking Deleted.",
+          text: "Activated.",
         }).then(() => {
-          getData();
+          navigate(`dashboard/traveller/stats-acc`);
         });
       })
       .catch((error) => {
@@ -52,27 +49,28 @@ const BViews = () => {
       });
   };
 
-  const handleUpdate = (item) => {
-    try {
-      const arrayString = JSON.stringify(item);
-      localStorage.setItem("trav", arrayString);
-    } catch (e) {
-    } finally {
-      navigate("/bup");
-    }
-  };
+  if (acc === undefined || acc.length == 0) {
+  }
+
   return (
     <div
       style={{ marginTop: "150px" }}
       className="d-flex flex-column justify-content-center align-items-center"
     >
-      <h3>All Active Bookings of User</h3>
+      <h3>All Deactivated Accounts</h3>
       <br />
-      {tr &&
-        tr.map((item) => (
+      <Button
+        className="btn btn-green"
+        onClick={() => navigate(`/dashboard/traveller/stats-acc`)}
+      >
+        View Activated
+      </Button>
+      <br />
+      {acc &&
+        acc.map((item) => (
           <Card
             className="shadow"
-            style={{ height: "430px", width: "500px", marginBottom: "100px" }}
+            style={{ height: "380px", width: "500px", marginBottom: "100px" }}
             key={item.id}
           >
             <Card.Body>
@@ -80,26 +78,18 @@ const BViews = () => {
                 className="d-flex flex-column justify-content-center align-items-center"
                 style={{ marginTop: "5px" }}
               >
-                <h5>Ref ID: {item.referenceId}</h5>
+                <h5>First Name: {item.firstName}</h5>
                 <br />
-                <h5>Name: {item.travallerName}</h5>
+                <h5>Last Name: {item.lastName}</h5>
                 <br />
-                <h5>Date: {item.reservationDate}</h5>
+                <h5>NIC: {item.nic}</h5>
                 <br />
-                <h5>Passengers: {item.noOfPassenger}</h5>
                 <br />
                 <Button
                   className="btn btn-blue"
-                  onClick={() => handleUpdate(item)}
+                  onClick={() => handleDelete(item.nic)}
                 >
-                  Update
-                </Button>
-                <br />
-                <Button
-                  className="btn btn-red"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  Delete
+                  Actiavte Account
                 </Button>
               </div>
             </Card.Body>
@@ -110,4 +100,4 @@ const BViews = () => {
   );
 };
 
-export default BViews;
+export default TravelerAccountStatusDeactive;

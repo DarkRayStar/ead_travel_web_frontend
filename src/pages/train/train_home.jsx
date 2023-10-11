@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
 //Navigation for Train schedules
-const Trhome = () => {
+const ScheduleHome = () => {
   const navigate = useNavigate();
 
   return (
@@ -60,4 +60,4 @@ const Trhome = () => {
   );
 };
 
-export default Trhome;
+export default ScheduleHome;

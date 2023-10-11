@@ -8,7 +8,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import MainLoader from "../../components/loader/Loader";
 
 //Traveler accounts deactivate
-const TravelerAccoutnStatus = () => {
+const TravelerAccountStatus = () => {
   const [acc, setAcc] = useState([]);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -61,7 +61,7 @@ const TravelerAccoutnStatus = () => {
 
       <Button
         className="btn btn-green mt-3"
-        onClick={() => navigate(`/tviewd`)}
+        onClick={() => navigate(`/dashboard/traveller/stats-acc-deactive`)}
       >
         View Deactivated
       </Button>
@@ -112,4 +112,4 @@ const TravelerAccoutnStatus = () => {
   );
 };
 
-export default TravelerAccoutnStatus;
+export default TravelerAccountStatus;

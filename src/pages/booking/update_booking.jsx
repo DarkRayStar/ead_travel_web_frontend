@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import { useParams } from "react-router-dom";
 
 //Update Booking  page
-const Bup = () => {
+const BookingUpdate = () => {
   const [tr, setTr] = useState([]);
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState();
@@ -154,7 +154,9 @@ const Bup = () => {
                         >
                           {tr &&
                             tr.map((item) => (
-                              <option key={item.id } value={item.id}>{item.trainName}</option>
+                              <option key={item.id} value={item.id}>
+                                {item.trainName}
+                              </option>
                             ))}
                         </Field>
                         <ErrorMessage
@@ -221,4 +223,4 @@ const Bup = () => {
   );
 };
 
-export default Bup;
+export default BookingUpdate;
