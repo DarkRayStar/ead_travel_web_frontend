@@ -3,9 +3,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
-//Navigation for Booking
 const Bhome = () => {
   const navigate = useNavigate();
 
@@ -23,10 +21,10 @@ const Bhome = () => {
               </div>
 
               <div
-                className="d-flex flex-column justify-content-center align-items-center"
+                className="d-flex justify-content-center align-items-center"
                 style={{ marginTop: "40px" }}
               >
-                <Button
+                {/* <Button
                   className="btn btn-blue"
                   onClick={() => navigate("/buse")}
                 >
@@ -38,8 +36,19 @@ const Bhome = () => {
                   onClick={() => navigate("/bview")}
                 >
                   View All Bookings
-                </Button>
-              
+                </Button> */}
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/booking/add")}
+                >
+                  <p> Add Booking</p>
+                </div>
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/booking/view")}
+                >
+                  <p>View All Bookings </p>
+                </div>
               </div>
             </Col>
           </Row>
