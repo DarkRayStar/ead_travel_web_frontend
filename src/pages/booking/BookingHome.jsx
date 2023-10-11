@@ -22,7 +22,6 @@ const Bookinghome = () => {
           border: '1px solid rgba(255, 255, 255, 0.125)',
           borderRadius: '10px',
           boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-          backdropFilter: 'blur(10px)',
           WebkitBackdropFilter: 'blur(4px)',
         }}
       >

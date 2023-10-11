@@ -1,5 +1,4 @@
 import moment from 'moment';
-import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import MainLoader from '../../components/loader/Loader';
 
