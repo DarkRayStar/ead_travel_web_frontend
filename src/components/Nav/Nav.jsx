@@ -4,24 +4,24 @@ import image from "../../assets/vite.svg";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
-//top navigation  bar
 const Nav = () => {
   const navigate = useNavigate();
-  const [navClass, setNavClass] = useState("");
   const [toggeledNav, settoggeledNav] = useState(false);
   const [role, setRole] = useState("");
   const toggleNav = () => {
     settoggeledNav(!toggeledNav);
   };
+
   const handleLogout = () => {
     try {
-      localStorage.clear()
+      localStorage.clear();
     } catch (e) {
       console.error(e);
     } finally {
       navigate("/");
     }
   };
+
   useEffect(() => {
     const role = localStorage.getItem("role");
     if (role === null || role === undefined || role === "") {
@@ -31,21 +31,15 @@ const Nav = () => {
     }
   }, []);
 
-  let componentToRender;
-
-  if (role == "officer") {
-    componentToRender = (
-      <li className="nav-item">
-        <Link target="/trhome" classes="nav-link">
-          Schedule
-        </Link>
-      </li>
-    );
-  } else {
-    componentToRender = <div></div>;
-  }
+  let scheduleLink = (
+    <li className="nav-item">
+      <Link target="/trhome" classes="nav-link">
+        Schedule
+      </Link>
+    </li>
+  );
   return (
-    <nav className={`navbar navbar-expand-md bg-light ${navClass}`}>
+    <nav className={`navbar navbar-expand-md`}>
       <div className="container">
         <a className="navbar-brand" href="/home">
           <img
@@ -86,7 +80,7 @@ const Nav = () => {
                 Booking
               </Link>
             </li>
-            {componentToRender}
+            {role == "officer" ? scheduleLink : ""}
             <Button
               variant="primary"
               className="logout-button"

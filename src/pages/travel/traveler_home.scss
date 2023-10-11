@@ -1,0 +1,15 @@
+.squareBtn {
+  background-color: rgb(68, 68, 68);
+  color: aliceblue;
+  height: 150px;
+  width: 200px;
+  border-radius: 12px;
+  margin: 20px;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(105, 105, 105);
+    transform: scale(1.1);
+  }
+}

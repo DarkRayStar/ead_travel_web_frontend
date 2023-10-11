@@ -70,13 +70,14 @@ const Tacc = () => {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
-      style={{ minHeight: "100vh" }}
     >
-      <Card className="shadow" style={{ height: "680px", width: "800px" ,marginTop:"40px"}}>
+      <Card
+        className="shadow px-5 my-5"
+      >
         <Card.Body>
           <Row>
             <Col className="fixed ">
-              <div className="d-flex justify-content-center align-items-center">
+            <div className="d-flex justify-content-center align-items-center">
                 <h3 className="topic">Traveler Account</h3>
               </div>
               <Formik
@@ -88,104 +89,135 @@ const Tacc = () => {
                   <div className="d-flex justify-content-center align-items-center">
                     <Form>
                       <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
-                        <Field
-                          type="text"
-                          name="firstName"
-                          id="firstName"
-                          style={{ width: "600px" }}
-                          className={`form-control ${
-                            dirty && isValid ? "is-valid" : ""
-                          }`}
-                        />
-                        <ErrorMessage
-                          name="firstName"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row>
+                          <Col className="pe-5">
+                            <label htmlFor="firstName">First Name</label>
+                          </Col>
+                          <Col className="ps-5">
+                            <Field
+                              type="text"
+                              name="firstName"
+                              id="firstName"
+                              style={{ width: "400px" }}
+                              className={`form-control ${
+                                dirty && isValid ? "is-valid" : ""
+                              }`}
+                            />
+                            <ErrorMessage
+                              name="firstName"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
-                        <Field
-                          type="text"
-                          name="lastName"
-                          id="lastName"
-                          style={{ width: "600px" }}
-                          className={`form-control ${
-                            dirty && isValid ? "is-valid" : ""
-                          }`}
-                        />
-                        <ErrorMessage
-                          name="lastName"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row>
+                          <Col>
+                            <label htmlFor="lastName">Last Name</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type="text"
+                              name="lastName"
+                              id="lastName"
+                              style={{ width: "400px" }}
+                              className={`form-control ${
+                                dirty && isValid ? "is-valid" : ""
+                              }`}
+                            />
+                            <ErrorMessage
+                              name="lastName"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="nic">NIC</label>
-                        <Field
-                          type="text"
-                          name="nic"
-                          id="nic"
-                          style={{ width: "600px" }}
-                          className={`form-control ${
-                            dirty && isValid ? "is-valid" : ""
-                          }`}
-                        />
-                        <ErrorMessage
-                          name="nic"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row>
+                          <Col>
+                            <label htmlFor="nic">NIC</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type="text"
+                              name="nic"
+                              id="nic"
+                              style={{ width: "400px" }}
+                              className={`form-control ${
+                                dirty && isValid ? "is-valid" : ""
+                              }`}
+                            />
+                            <ErrorMessage
+                              name="nic"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="phone">Phone Number</label>
-                        <Field
-                          type="phone"
-                          name="phone"
-                          id="phone"
-                          style={{ width: "600px" }}
-                          className={`form-control ${
-                            dirty && isValid ? "is-valid" : ""
-                          }`}
-                        />
-                        <ErrorMessage
-                          name="phone"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row>
+                          <Col>
+                            <label htmlFor="phone">Phone Number</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type="phone"
+                              name="phone"
+                              id="phone"
+                              style={{ width: "400px" }}
+                              className={`form-control ${
+                                dirty && isValid ? "is-valid" : ""
+                              }`}
+                            />
+                            <ErrorMessage
+                              name="phone"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <Field
-                          type="password"
-                          name="password"
-                          id="password"
-                          style={{ width: "600px" }}
-                          className={`form-control ${
-                            dirty && isValid ? "is-valid" : ""
-                          }`}
-                        />
-                        <ErrorMessage
-                          name="password"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row>
+                          <Col>
+                            <label htmlFor="password">Password</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type="password"
+                              name="password"
+                              id="password"
+                              style={{ width: "400px" }}
+                              className={`form-control ${
+                                dirty && isValid ? "is-valid" : ""
+                              }`}
+                            />
+                            <ErrorMessage
+                              name="password"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
-                      <div className="d-flex justify-content-center align-items-center">
+
+                      <div className="d-flex justify-content-center align-items-center pt-4">
                         <Button
                           type="submit"
                           className="btn btn-gold"
                           disabled={isSubmitting}
+                          style={{ width: "600px" }}
                         >
                           {isSubmitting ? "Submitting..." : "Submit"}
                         </Button>
                       </div>
-                      <br />
                     </Form>
                   </div>
                 )}

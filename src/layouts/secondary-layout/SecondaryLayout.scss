@@ -1,0 +1,16 @@
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(92, 92, 92);
+
+  &__body {
+    flex-grow: 1;
+    max-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
+    background-image: url("../../assets/bridge.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

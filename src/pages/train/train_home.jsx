@@ -23,10 +23,10 @@ const Trhome = () => {
               </div>
 
               <div
-                className="d-flex flex-column justify-content-center align-items-center"
+                className="d-flex justify-content-center align-items-center"
                 style={{ marginTop: "40px" }}
               >
-                <Button
+                {/* <Button
                   className="btn btn-blue"
                   onClick={() => navigate("/tradd")}
                 >
@@ -38,7 +38,19 @@ const Trhome = () => {
                   onClick={() => navigate("/trview")}
                 >
                   View All
-                </Button>
+                </Button> */}
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/scheduling/add")}
+                >
+                  <p>Create Schedules</p>
+                </div>
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/scheduling/view")}
+                >
+                  <p>View All </p>
+                </div>
               </div>
             </Col>
           </Row>

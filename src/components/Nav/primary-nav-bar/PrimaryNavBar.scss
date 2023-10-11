@@ -1,0 +1,45 @@
+.primaryNavBar {
+  width: 210px;
+  background-color: rgb(68, 68, 68);
+}
+
+.logoImg {
+  width: 100px;
+  height: 100px;
+}
+
+.subNavLink {
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.logoutSection {
+  height: 100%;
+
+  .logoutBtn {
+    font-size: 20px;
+    color: rgb(150, 130, 130);
+    cursor: pointer;
+
+    &:hover {
+      color: black;
+    }
+  }
+}
+
+.linkDivider {
+  width: 80%;
+}
+
+.activeLink {
+  color: white;
+}
+
+.deactiveLink {
+  color: black;
+}

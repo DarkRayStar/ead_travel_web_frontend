@@ -4,9 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import "./traveler_home.scss";
 
-//Navigation for Traveler account creation
-const Thome = () => {
+const Travellerhome = () => {
   const [role, setRole] = useState("");
   const navigate = useNavigate();
 
@@ -15,15 +15,17 @@ const Thome = () => {
     setRole(role);
   }, []);
 
-  let componentToRender;
+  // let componentToRender;
 
-  if (role == "officer") {
-    componentToRender = (
-      <Button className="btn btn-orange" onClick={() => navigate("/tviewa")}>Account Status</Button>
-    );
-  } else {
-    componentToRender = <div></div>;
-  }
+  // if (role == "officer") {
+  //   componentToRender = (
+  //     <Button className="btn btn-orange" onClick={() => navigate("/tviewa")}>
+  //       Account Status
+  //     </Button>
+  //   );
+  // } else {
+  //   componentToRender = <div></div>;
+  // }
   return (
     <div
       className="d-flex justify-content-center align-items-center"
@@ -34,17 +36,47 @@ const Thome = () => {
           <Row>
             <Col className="fixed ">
               <div className="d-flex justify-content-center align-items-center">
-                <h3 className="topic">Traveler Account Management</h3>
+                <h3 className="topic"> Account Management</h3>
               </div>
 
-              <div className="d-flex flex-column justify-content-center align-items-center" style={{marginTop:"40px"}}>
-                <Button className="btn btn-blue" onClick={() => navigate("/tacc")}>Create Account</Button>
-                <br/>
-                <Button className="btn btn-green" onClick={() => navigate("/tview")}>
-                  View All 
+              <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ marginTop: "50px" }}
+              >
+                {/* <Button
+                  className="btn btn-blue"
+                  onClick={() => navigate("/tacc")}
+                >
+                  Create Account
                 </Button>
-                <br />
-                {componentToRender}
+                <Button
+                  className="btn btn-green"
+                  onClick={() => navigate("/tview")}
+                >
+                  View All
+                </Button> */}
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/traveller/create-acc")}
+                >
+                  <p>Create Account</p>
+                </div>
+                <div
+                  className="squareBtn d-flex justify-content-center align-items-center"
+                  onClick={() => navigate("/dashboard/traveller/view-acc")}
+                >
+                  <p>View All </p>
+                </div>
+                {role == "officer" ? (
+                  <div
+                    className="squareBtn d-flex justify-content-center align-items-center"
+                    onClick={() => navigate("/dashboard/traveller/stats-acc")}
+                  >
+                    <p>Account Status </p>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </Col>
           </Row>
@@ -54,4 +86,4 @@ const Thome = () => {
   );
 };
 
-export default Thome;
+export default Travellerhome;
