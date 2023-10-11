@@ -1,10 +1,10 @@
 body {
-  background-color: "#f8f9fd";
+  background-color: '#f8f9fd';
 }
 .first-column {
   position: relative;
   padding: 0;
-  background-image: url("../../assets/bg2.jpg");
+  background-image: url('../../assets/bg2.jpg');
   background-size: cover;
   background-position: center;
   color: rgba(7, 3, 3, 0);
@@ -95,11 +95,12 @@ body {
 }
 
 .topic {
-  font-family: "Roboto", sans-serif; /* Use the name of the imported font */
+  font-family: 'Roboto', sans-serif;
   font-weight: 200;
   font-size: 2rem;
   margin-top: 10px;
   margin-bottom: 40px;
+  color: #d7d7d7;
 }
 
 .fixed {
