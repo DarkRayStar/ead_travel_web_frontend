@@ -1,20 +1,30 @@
-import React from "react";
-import bgImage from "../../assets/bg1.jpg";
-import Section from "./section";
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+import bgImage from '../../assets/welcome.gif';
+import Section from './section';
 const Home = () => {
+  const navigate = useNavigate();
   return (
-    <Section id="home">
+    <Section id='home'>
       <div>
         <div
-          className="home-content p-5"
-          style={{ backgroundImage: `url(${bgImage})` }}
+          className='home-content p-5'
+          style={{ backgroundImage: `url(${bgImage})`, height: '100%' }}
         >
-          <div className="intro container text-center text-light">
-            <h1 className="title">WELCOME</h1>
-            <h2 className="sub-title mb-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-              laborum minus molestiae.
+          <div className='intro container text-center text-light'>
+            <h1 className='title'>Efficient Ticket Management</h1>
+            <h2 className='sub-title mb-4'>
+              Our powerful tools and intuitive interface empower you to efficiently handle ticketing
+              operations. From monitoring sales trends to managing bookings, our system simplifies
+              every aspect of the ticketing process. Stay in control, stay ahead.
             </h2>
+            <Button
+              style={{ background: '#09a162', width: '300px', height: '45px', border: 'none' }}
+              onClick={() => navigate(`/dashboard/`)}
+            >
+              Explore Features
+            </Button>
           </div>
         </div>
       </div>
