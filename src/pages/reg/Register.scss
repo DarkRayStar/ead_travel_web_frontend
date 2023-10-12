@@ -1,14 +1,45 @@
-body {
-  background-color: '#f8f9fd';
+.registerCard {
+  height: 650px !important;
+  width: 900px;
+  border-radius: 20px !important;
+  max-height: 650px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
-.first-column {
-  position: relative;
-  padding: 0;
-  background-image: url('../../assets/bg2.jpg');
-  background-size: cover;
-  background-position: center;
-  color: rgba(7, 3, 3, 0);
-  height: 830px;
+
+.registerScreen {
+  background-color: #182734;
+
+  .topic {
+    color: black;
+  }
+
+  .btnSubmit {
+    background-color: #09a162;
+    width: 50%;
+    border-radius: 20px;
+    border: none;
+
+    &:hover {
+      background-color: #182734;
+    }
+  }
+
+  .logoImgLogin {
+    height: 200px;
+  }
+
+  .firstColumn {
+    background-color: #09a162 !important;
+    height: 650px;
+    max-height: 650px;
+    overflow-y: auto;
+    border-radius: 20px 0 0 20px;
+  }
 }
 
 .content {
@@ -26,63 +57,6 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
-
-.btn-gold {
-  background-color: #e3b04b !important;
-  color: #fff;
-  width: 200px !important;
-  border: 1px solid #ccc !important;
-  &:hover {
-    background-color: #fcc100 !important; /* Darker gold color on hover */
-  }
-}
-
-.btn-blue {
-  background-color: #0083c0 !important;
-  color: #fff;
-  width: 400px !important;
-  height: 50px;
-  border: 1px solid #ccc !important;
-  &:hover {
-    background-color: #0315b1 !important; /* Darker gold color on hover */
-  }
-}
-
-.btn-green {
-  background-color: #0fcc08 !important;
-  color: #fff;
-  width: 400px !important;
-  height: 50px;
-  border: 1px solid #ccc !important;
-  &:hover {
-    background-color: #058101 !important; /* Darker gold color on hover */
-  }
-}
-.btn-red {
-  background-color: #e42e16 !important;
-  color: #fff;
-  width: 400px !important;
-  height: 50px;
-  border: 1px solid #ccc !important;
-  &:hover {
-    background-color: #ce0505 !important; /* Darker gold color on hover */
-  }
-}
-
-.btn-orange {
-  background-color: #e38f4b !important;
-  color: #fff;
-  width: 400px !important;
-  height: 50px;
-  border: 1px solid #ccc !important;
-  &:hover {
-    background-color: #fc7100 !important; /* Darker gold color on hover */
-  }
-}
-
 .form-control {
   width: 100px;
 }
@@ -95,7 +69,7 @@ body {
 }
 
 .topic {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 200;
   font-size: 2rem;
   margin-top: 10px;
@@ -103,7 +77,7 @@ body {
   color: #d7d7d7;
 }
 
-.fixed {
-  height: 600px;
-  margin-left: 20px;
-}
+// .fixed {
+//   height: 600px;
+//   margin-left: 20px;
+// }

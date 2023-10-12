@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/login";
-import Reg from "./pages/reg/Register";
 import Home from "./pages/home/home";
 import MainLayout from "./layouts/MainLayout";
 import SecondaryLayout from "./layouts/secondary-layout/SecondaryLayout";
@@ -22,6 +21,7 @@ import UserBookings from "./pages/booking/UserBookings";
 import CreateBooking from "./pages/booking/CreateBooking";
 import BookingUpdate from "./pages/booking/update_booking";
 import Travelerhome from "./pages/travel/TravelerHome";
+import Register from "./pages/reg/Register";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/reg" element={<Reg />} />
+          <Route path="/reg" element={<Register />} />
           <Route path="/dashboard" element={<SecondaryLayout />}>
             <Route index element={<Travellerhome />} />
             <Route path="traveller" element={<Travellerhome />} />
