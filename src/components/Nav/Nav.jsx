@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Link from "../Link/Link";
-import image from "../../assets/vite.svg";
-import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const Nav = () => {
   const navigate = useNavigate();
   const [toggeledNav, settoggeledNav] = useState(false);
-  const [role, setRole] = useState("");
-  const toggleNav = () => {
-    settoggeledNav(!toggeledNav);
-  };
+  const [role, setRole] = useState('');
 
   const handleLogout = () => {
     try {
@@ -18,78 +14,33 @@ const Nav = () => {
     } catch (e) {
       console.error(e);
     } finally {
-      navigate("/");
+      navigate('/');
     }
   };
 
   useEffect(() => {
-    const role = localStorage.getItem("role");
-    if (role === null || role === undefined || role === "") {
-      navigate("/");
+    const role = localStorage.getItem('role');
+    if (role === null || role === undefined || role === '') {
+      navigate('/');
     } else {
       setRole(role);
     }
   }, []);
 
-  let scheduleLink = (
-    <li className="nav-item">
-      <Link target="/trhome" classes="nav-link">
-        Schedule
-      </Link>
-    </li>
-  );
   return (
-    <nav className={`navbar navbar-expand-md`}>
-      <div className="container">
-        <a className="navbar-brand" href="/home">
-          <img
-            src={image}
-            alt="Bootstrap Logo"
-            width="70"
-            height="70"
-            style={{ backgroundColor: "#e3e3e3c4" }}
-          />
+    <nav className={`navbar navbar-expand-md background: '#09a162' `} style={{}}>
+      <div className='container'>
+        <a className='navbar-brand' href='/home'>
+          <img src={logo} alt='Bootstrap Logo' width='70' height='70' />
         </a>
-        <div
-          className={`navbar-toggler nav-icon ${(() => {
-            if (toggeledNav) return "open";
-            return "";
-          })()}`}
-          onClick={toggleNav}
+        <Button
+          variant='primary'
+          className='logout-button'
+          style={{ background: '#182734', border: 'none' }}
+          onClick={handleLogout}
         >
-          <span />
-          <span />
-          <span />
-        </div>
-
-        <div
-          className={`collapse navbar-collapse ${(() => {
-            if (toggeledNav) return "show";
-            return "";
-          })()}`}
-        >
-          <ul className="navbar-nav " style={{ marginLeft: "33%" }}>
-            <li className="nav-item">
-              <Link target="/thome" offset={-120} classes="nav-link">
-                Traveler
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link target="/bhome" classes="nav-link">
-                Booking
-              </Link>
-            </li>
-            {role == "officer" ? scheduleLink : ""}
-            <Button
-              variant="primary"
-              className="logout-button"
-              onClick={handleLogout}
-            >
-              Log Out
-            </Button>
-          </ul>
-        </div>
+          Log Out
+        </Button>
       </div>
     </nav>
   );
