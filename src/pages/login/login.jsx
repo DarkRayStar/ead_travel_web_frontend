@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,10 +11,12 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "./login.scss";
 import logo from "../../assets/logo.png";
+import MainLoader from "../../components/loader/Loader";
 
 //Login page
 const Login = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     nic: "",
     password: "",
@@ -28,12 +30,13 @@ const Login = () => {
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
+    setLoading(true);
     let data = {
       Nic: values.nic,
       Password: values.password,
     };
 
-    axios
+    await axios
       .post("http://localhost:44334/Login", data)
       .then((res) => {
         console.log(res.data);
@@ -58,10 +61,12 @@ const Login = () => {
         });
       });
     setSubmitting(false);
+    setLoading(false);
   };
 
   return (
     <Row className="loginScreen">
+      <MainLoader show={loading} />
       <Col className="d-flex justify-content-center align-items-center">
         <Card className="loginCard">
           <Card.Body className="p-0">
