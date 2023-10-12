@@ -9,7 +9,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import "./login.css";
+import "./login.scss";
+import logo from "../../assets/logo.png";
 
 //Login page
 const Login = () => {
@@ -60,84 +61,88 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <Card className="shadow" style={{ height: "480px", width: "1200px" }}>
-        <Card.Body>
-          <Row>
-            <Col className="first-column2"></Col>
-            <Col className="fixed ">
-              <div className="d-flex justify-content-center align-items-center">
-                <h3 className="topic">Sign In</h3>
-              </div>
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-              >
-                {({ isSubmitting, isValid, dirty }) => (
-                  <Form className="fm1">
-                    <div className="form-group">
-                      <label htmlFor="nic">NIC</label>
-                      <Field
-                        type="text"
-                        name="nic"
-                        id="nic"
-                        style={{ width: "90%" }}
-                        className={`form-control ${
-                          dirty && isValid ? "is-valid" : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="nic"
-                        component="div"
-                        className="text-danger"
-                      />
-                    </div>
+    <Row className="loginScreen">
+      <Col className="d-flex justify-content-center align-items-center">
+        <Card className="loginCard">
+          <Card.Body className="p-0">
+            <Row>
+              <Col className="col-5 firstColumn d-flex justify-content-center align-items-center">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  className={`d-block mx-auto mb-3 mt-2 logoImgLogin cursor-pointer`}
+                />
+              </Col>
+              <Col className="col-7 d-flex justify-content-center flex-column ps-5">
+                <div className="pb-3 pt-1">
+                  <h3 className="fw-bold">Sign In</h3>
+                </div>
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={handleSubmit}
+                >
+                  {({ isSubmitting, isValid, dirty }) => (
+                    <Form>
+                      <div>
+                        <label htmlFor="nic">NIC</label>
+                        <Field
+                          type="text"
+                          name="nic"
+                          id="nic"
+                          style={{ width: "90%" }}
+                          className={`form-control ${
+                            dirty && isValid ? "is-valid" : ""
+                          }`}
+                        />
+                        <ErrorMessage
+                          name="nic"
+                          component="div"
+                          className="text-danger"
+                        />
+                      </div>
 
-                    <div className="form-group">
-                      <label htmlFor="password">Password</label>
-                      <Field
-                        type="password"
-                        name="password"
-                        id="password"
-                        style={{ width: "90%" }}
-                        className={`form-control ${
-                          dirty && isValid ? "is-valid" : ""
-                        }`}
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component="div"
-                        className="text-danger"
-                      />
-                    </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                      <Button
-                        type="submit"
-                        className="btn btn-gold"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? "Submitting..." : "Submit"}
-                      </Button>
-                    </div>
-                    <br />
-                    <p className="mt-3">
-                      Not Registered Yet?{" "}
-                      <Link to="/reg" style={{ color: "#e3b04b" }}>
-                        Sign Up
-                      </Link>
-                    </p>
-                  </Form>
-                )}
-              </Formik>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    </div>
+                      <div className="pt-3">
+                        <label htmlFor="password">Password</label>
+                        <Field
+                          type="password"
+                          name="password"
+                          id="password"
+                          style={{ width: "90%" }}
+                          className={`form-control ${
+                            dirty && isValid ? "is-valid" : ""
+                          }`}
+                        />
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="text-danger"
+                        />
+                      </div>
+                      <div className="d-flex justify-content-center align-items-center pt-4">
+                        <Button
+                          type="submit"
+                          className="btnSubmit"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Submitting..." : "Submit"}
+                        </Button>
+                      </div>
+                      <p className="mt-4">
+                        Not Registered Yet?{" "}
+                        <Link to="/reg" style={{ color: "#09a162" }}>
+                          Sign Up
+                        </Link>
+                      </p>
+                    </Form>
+                  )}
+                </Formik>
+              </Col>
+            </Row>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 

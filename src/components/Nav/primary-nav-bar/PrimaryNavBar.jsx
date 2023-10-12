@@ -45,11 +45,13 @@ const PrimaryNavBar = () => {
     >
       <div>
         <div>
-          <img
-            src={logo}
-            alt="Logo"
-            className={`d-block mx-auto mb-3 mt-2 logoImg`}
-          />
+          <a href="/home">
+            <img
+              src={logo}
+              alt="Logo"
+              className={`d-block mx-auto mb-3 mt-2 logoImg cursor-pointer`}
+            />
+          </a>
         </div>
         <div className="pt-5 ps-4">
           <h2

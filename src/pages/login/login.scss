@@ -1,0 +1,35 @@
+.firstColumn {
+  background-color: #09a162 !important;
+  height: 450px;
+  border-radius: 20px 0 0 20px;
+}
+
+.loginCard {
+  height: 450px !important;
+  width: 900px;
+  border-radius: 20px !important;
+}
+
+.loginScreen {
+  background-color: #182734;
+  height: 100vh;
+
+  .topic {
+    color: black;
+  }
+
+  .btnSubmit {
+    background-color: #09a162;
+    width: 50%;
+    border-radius: 20px;
+    border: none;
+
+    &:hover {
+      background-color: #182734;
+    }
+  }
+
+  .logoImgLogin {
+    height: 200px;
+  }
+}
