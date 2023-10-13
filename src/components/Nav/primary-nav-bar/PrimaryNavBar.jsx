@@ -4,12 +4,15 @@ import logo from '../../../assets/logo.png';
 import './PrimaryNavBar.scss';
 
 const PrimaryNavBar = () => {
+  // Initializing hooks
   const navigate = useNavigate();
   const location = useLocation();
 
+  // State variables for user role and active link
   const [role, setRole] = useState('');
   const [active, setActive] = useState('');
 
+  // Check if user is logged in, otherwise redirect to home
   useEffect(() => {
     const role = localStorage.getItem('role');
     if (role === null || role === undefined || role === '') {
@@ -19,6 +22,7 @@ const PrimaryNavBar = () => {
     }
   }, []);
 
+  // Set active link based on current URL path
   useEffect(() => {
     if (location.pathname === '/dashboard/traveller') {
       setActive('travellers');
@@ -29,6 +33,7 @@ const PrimaryNavBar = () => {
     }
   }, [location.pathname]);
 
+  // Handle logout action
   const handleLogout = () => {
     try {
       localStorage.clear();
@@ -39,6 +44,7 @@ const PrimaryNavBar = () => {
     }
   };
 
+  // JSX structure for the component
   return (
     <div className={`vh-100 d-flex flex-column justify-content-between py-4 primaryNavBar`}>
       <div>
