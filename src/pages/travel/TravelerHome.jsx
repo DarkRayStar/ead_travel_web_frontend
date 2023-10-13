@@ -5,15 +5,19 @@ import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 import './traveler_home.scss';
 
+// Component for the Traveler Home Page
 const Travelerhome = () => {
+  // State variable to store the user's role
   const [role, setRole] = useState('');
   const navigate = useNavigate();
 
+  // Fetch the user's role from local storage when the component mounts
   useEffect(() => {
     const role = localStorage.getItem('role');
     setRole(role);
   }, []);
 
+  // JSX code for rendering the component
   return (
     <div
       className='d-flex justify-content-center align-items-center'

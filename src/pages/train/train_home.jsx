@@ -1,13 +1,16 @@
+// Importing necessary modules
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 
-//Navigation for Train schedules
+// Navigation component for Train schedules
 const ScheduleHome = () => {
+  // Initialize navigation hook
   const navigate = useNavigate();
 
+  // JSX code for rendering the component
   return (
     <div
       className='d-flex justify-content-center align-items-center'
@@ -37,19 +40,6 @@ const ScheduleHome = () => {
                 className='d-flex justify-content-center align-items-center'
                 style={{ marginTop: '40px' }}
               >
-                {/* <Button
-                  className="btn btn-blue"
-                  onClick={() => navigate("/tradd")}
-                >
-                  Create Schedules
-                </Button>
-                <br />
-                <Button
-                  className="btn btn-green"
-                  onClick={() => navigate("/trview")}
-                >
-                  View All
-                </Button> */}
                 <div
                   className='squareBtn d-flex justify-content-center align-items-center'
                   onClick={() => navigate('/dashboard/scheduling/add')}

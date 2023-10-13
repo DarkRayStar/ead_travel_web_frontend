@@ -4,8 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useNavigate } from 'react-router-dom';
 
+// Booking Home Component
 const Bookinghome = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // useNavigate is a hook from 'react-router-dom' used for navigation
 
   return (
     <div
@@ -36,25 +37,15 @@ const Bookinghome = () => {
                 className='d-flex justify-content-center align-items-center'
                 style={{ marginTop: '40px' }}
               >
-                {/* <Button
-                  className="btn btn-blue"
-                  onClick={() => navigate("/buse")}
-                >
-                  Add Booking
-                </Button>
-                <br />
-                <Button
-                  className="btn btn-green"
-                  onClick={() => navigate("/bview")}
-                >
-                  View All Bookings
-                </Button> */}
+                {/* Add Booking Button */}
                 <div
                   className='squareBtn d-flex justify-content-center align-items-center'
                   onClick={() => navigate('/dashboard/booking/add')}
                 >
                   <p> Add Booking</p>
                 </div>
+
+                {/* View All Bookings Button */}
                 <div
                   className='squareBtn d-flex justify-content-center align-items-center'
                   onClick={() => navigate('/dashboard/booking/view')}
