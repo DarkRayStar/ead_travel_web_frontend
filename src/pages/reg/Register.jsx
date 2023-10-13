@@ -50,7 +50,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:44334/api/TravelerProfile",
+        "https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement",
         data
       );
       if (response.status === 200) {
