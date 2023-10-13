@@ -1,10 +1,10 @@
-import axios from 'axios';
-import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import { useNavigate } from 'react-router-dom';
-import MainLoader from '../../components/loader/Loader';
+import axios from "axios";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
+import MainLoader from "../../components/loader/Loader";
 
 //VIEW All  booking
 const AllBookings = () => {
@@ -14,13 +14,15 @@ const AllBookings = () => {
 
   const getData = () => {
     axios
-      .get('http://localhost:44334/api/Reservation')
+      .get(
+        "https://ssd-train-booking-web-service.azurewebsites.net/api/ReservationManagement"
+      )
       .then((response) => {
         const fetchedData = response.data;
         setTr(fetchedData);
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
   };
   useEffect(() => {
@@ -28,37 +30,39 @@ const AllBookings = () => {
   }, []);
 
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center my-5'>
+    <div className="d-flex flex-column justify-content-center align-items-center my-5">
       <MainLoader show={loading} />
-      <h2 style={{ color: 'white' }}>All Active Bookings</h2>
+      <h2 style={{ color: "white" }}>All Active Bookings</h2>
 
       <Container>
         <Row className={`mt-5 mb-0 mb-md-2 mb-lg-5 px-5`}>
           {tr &&
             tr.map((item) => (
-              <Col xl={4} lg={4} md={4} sm={12} className='mb-4'>
-                <Card className='shadow p-2' key={item.id}>
+              <Col xl={4} lg={4} md={4} sm={12} className="mb-4">
+                <Card className="shadow p-2" key={item.id}>
                   <Card.Body>
                     <Row>
                       <Col>
                         <Row>
                           <Col>NIC</Col>
-                          <Col className='col-1'>:</Col>
+                          <Col className="col-1">:</Col>
                           <Col>{item.referenceId}</Col>
                         </Row>
                         <Row>
                           <Col>Name</Col>
-                          <Col className='col-1'>:</Col>
+                          <Col className="col-1">:</Col>
                           <Col>{item.travallerName}</Col>
                         </Row>
                         <Row>
                           <Col>Reservation Date</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{moment(item.reservationDate).format('MMM Do YY')}</Col>
+                          <Col className="col-1">:</Col>
+                          <Col>
+                            {moment(item.reservationDate).format("MMM Do YY")}
+                          </Col>
                         </Row>
                         <Row>
                           <Col>Passengers</Col>
-                          <Col className='col-1'>:</Col>
+                          <Col className="col-1">:</Col>
                           <Col>{item.noOfPassenger}</Col>
                         </Row>
                       </Col>

@@ -37,7 +37,10 @@ const Login = () => {
     };
 
     await axios
-      .post("http://localhost:44334/Login", data)
+      .post(
+        "https://ssd-train-booking-web-service.azurewebsites.net/UserManagement",
+        data
+      )
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("nic", res.data.nic);
