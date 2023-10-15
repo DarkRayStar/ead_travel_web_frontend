@@ -16,7 +16,7 @@ const AllBookings = () => {
   // Define a function to fetch data from the API
   const getData = () => {
     axios
-      .get('https://ssd-train-booking-web-service.azurewebsites.net/api/ReservationManagement')
+      .get('https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement')
       .then((response) => {
         const fetchedData = response.data; // Store fetched data in a variable
         setTr(fetchedData); // Update tr state with fetched data

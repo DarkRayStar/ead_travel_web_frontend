@@ -65,7 +65,7 @@ const UpdateSchedule = () => {
 
     try {
       const response = await axios.post(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/TrainManagement',
+        'https://ead-train-booking-web-service.azurewebsites.net/api/TrainManagement',
         data
       );
       if (response.status === 200) {

@@ -19,7 +19,7 @@ const BookingUpdate = () => {
   // Define a function to fetch data about trains
   const getData = () => {
     axios
-      .get('https://ssd-train-booking-web-service.azurewebsites.net/api/TrainManagement')
+      .get('https://ead-train-booking-web-service.azurewebsites.net/api/TrainManagement')
       .then((response) => {
         const fetchedData = response.data;
         setTr(fetchedData);
@@ -50,7 +50,7 @@ const BookingUpdate = () => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.post(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/ReservationManagement',
+        'https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement',
         values
       );
       if (response.status === 200) {

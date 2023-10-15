@@ -45,7 +45,7 @@ const Login = () => {
     try {
       // Making a POST request
       const res = await axios.post(
-        'https://ssd-train-booking-web-service.azurewebsites.net/UserManagement',
+        'https://ead-train-booking-web-service.azurewebsites.net/UserManagement',
         data
       );
       // Storing data in local storage

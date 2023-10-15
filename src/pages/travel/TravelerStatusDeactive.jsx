@@ -18,7 +18,7 @@ const TravelerAccountStatusDeactive = () => {
   const getData = () => {
     axios
       .get(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=false'
+        'https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=false'
       )
       .then((response) => {
         console.log(response.data);
@@ -42,7 +42,7 @@ const TravelerAccountStatusDeactive = () => {
     };
     axios
       .put(
-        `https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`,
+        `https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`,
         data
       )
       .then((response) => {

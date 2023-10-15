@@ -24,7 +24,7 @@ const TravelerAccountUpdate = () => {
   // Fetching initial data for the form
   useEffect(() => {
     axios
-      .get('https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement/' + id)
+      .get('https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement/' + id)
       .then((response) => {
         const dt = response.data;
         const data = {
@@ -64,7 +64,7 @@ const TravelerAccountUpdate = () => {
 
     try {
       const response = await axios.post(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement/',
+        'https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement/',
         data
       );
       if (response.status === 200) {

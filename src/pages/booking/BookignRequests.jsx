@@ -17,7 +17,7 @@ const BookingRequests = () => {
   const getData = () => {
     axios
       .get(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=true'
+        'https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=true'
       )
       .then((response) => {
         const fetchedData = response.data; // Store fetched data in a variable

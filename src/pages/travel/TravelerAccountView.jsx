@@ -20,7 +20,7 @@ const TravelerAccountView = () => {
     setLoading(true);
     await axios
       .get(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=true'
+        'https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=true'
       )
       .then((response) => {
         const fetchedData = response.data;
@@ -41,7 +41,7 @@ const TravelerAccountView = () => {
   const handleDelete = (itemId) => {
     axios
       .delete(
-        `https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`
+        `https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`
       )
       .then((response) => {
         Swal.fire({

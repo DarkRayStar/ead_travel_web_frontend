@@ -20,7 +20,7 @@ const AllSchedules = () => {
   const getData = () => {
     // Make a GET request to fetch train data
     axios
-      .get('https://ssd-train-booking-web-service.azurewebsites.net/api/TrainManagement')
+      .get('https://ead-train-booking-web-service.azurewebsites.net/api/TrainManagement')
       .then((response) => {
         const fetchedData = response.data;
         setTr(fetchedData);
@@ -44,7 +44,7 @@ const AllSchedules = () => {
     console.log(itemId);
     axios
       .delete(
-        `https://ssd-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`
+        `https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement/${itemId}`
       )
       .then((response) => {
         // Show success message using Swal

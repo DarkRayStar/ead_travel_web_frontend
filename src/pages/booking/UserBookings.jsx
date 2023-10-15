@@ -23,7 +23,7 @@ const UserBookings = () => {
   const getData = () => {
     axios
       .get(
-        'https://ssd-train-booking-web-service.azurewebsites.net/api/ReservationManagement/' + id
+        'https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement/' + id
       )
       .then((response) => {
         const fetchedData = response.data;
@@ -50,7 +50,7 @@ const UserBookings = () => {
     };
     axios
       .put(
-        `https://ssd-train-booking-web-service.azurewebsites.net/api/ReservationManagement/${itemId}`,
+        `https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement/${itemId}`,
         data
       )
       .then((response) => {
