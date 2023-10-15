@@ -74,7 +74,7 @@ const UpdateSchedule = () => {
           title: 'Success!',
           text: 'Schedule Updated.',
         }).then(() => {
-          navigate('/trhome');
+          navigate('/dashboard/scheduling/view');
         });
       }
     } catch (error) {
