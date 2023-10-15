@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -93,7 +93,7 @@ const CreateBooking = () => {
       className='d-flex justify-content-center align-items-center'
       style={{ minHeight: '100vh' }}
     >
-      <Card className='shadow' style={{ height: '880px', width: '800px', marginTop: '40px' }}>
+      <Card className='shadow' style={{ width: '800px', marginTop: '40px' }}>
         <Card.Body>
           <Row>
             <Col className='fixed '>
@@ -108,9 +108,139 @@ const CreateBooking = () => {
                 {({ isSubmitting, isValid, dirty }) => (
                   <div className='d-flex justify-content-center align-items-center'>
                     <Form>
-                      {/* Form Fields */}
-                      {/* ... */}
-                      {/* Submit Button */}
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='travallerName'>Name</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type='text'
+                              name='travallerName'
+                              id='travallerName'
+                              style={{ width: '600px' }}
+                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                            />
+                            <ErrorMessage
+                              name='travallerName'
+                              component='div'
+                              className='text-danger'
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='phoneNumber'>Phone Number</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type='text'
+                              name='phoneNumber'
+                              id='phoneNumber'
+                              style={{ width: '600px' }}
+                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                            />
+                            <ErrorMessage
+                              name='phoneNumber'
+                              component='div'
+                              className='text-danger'
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='noOfPassenger'>Passenger</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type='number'
+                              name='noOfPassenger'
+                              id='cnoOfPassenger'
+                              style={{ width: '600px' }}
+                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                            />
+                            <ErrorMessage
+                              name='noOfPassenger'
+                              component='div'
+                              className='text-danger'
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='train'>Select a Train</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              as='select'
+                              name='train'
+                              id='train'
+                              style={{ width: '600px' }}
+                              className='form-control'
+                            >
+                              {tr &&
+                                tr.map((item) => (
+                                  <option key={item.id} value={item.id}>
+                                    {item.trainName}
+                                  </option>
+                                ))}
+                            </Field>
+                            <ErrorMessage name='train' component='div' className='text-danger' />
+                          </Col>
+                        </Row>
+                      </div>
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='reservationDate'>Date</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type='datetime-local'
+                              name='reservationDate'
+                              id='reservationDate'
+                              style={{ width: '600px' }}
+                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                            />
+                            <ErrorMessage
+                              name='reservationDate'
+                              component='div'
+                              className='text-danger'
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+
+                      <div className='form-group'>
+                        <Row>
+                          <Col className='d-flex align-items-center'>
+                            <label htmlFor='emailAddress'>Email</label>
+                          </Col>
+                          <Col>
+                            <Field
+                              type='email'
+                              name='emailAddress'
+                              id='emailAddress'
+                              style={{ width: '600px' }}
+                              className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                            />
+                            <ErrorMessage
+                              name='emailAddress'
+                              component='div'
+                              className='text-danger'
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+
                       <div className='d-flex justify-content-center align-items-center mt-5'>
                         <Button type='submit' className='btn btn-gold' disabled={isSubmitting}>
                           {isSubmitting ? 'Submitting...' : 'Submit'}

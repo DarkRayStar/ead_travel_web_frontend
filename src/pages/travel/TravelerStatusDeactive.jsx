@@ -51,7 +51,7 @@ const TravelerAccountStatusDeactive = () => {
           title: 'Success!',
           text: 'Activated.',
         }).then(() => {
-          navigate(`dashboard/traveller/stats-acc`);
+          navigate(`/dashboard/traveller/stats-acc`);
         });
       })
       .catch((error) => {

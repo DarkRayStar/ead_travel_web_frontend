@@ -73,7 +73,7 @@ const TravelerAccountUpdate = () => {
           title: 'Success!',
           text: 'Account Updated.',
         }).then(() => {
-          navigate('/thome');
+          navigate('/dashboard/traveller/view-acc');
         });
       }
     } catch (error) {
