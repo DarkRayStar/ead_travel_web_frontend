@@ -20,8 +20,9 @@ const UserBookings = () => {
   const [loading, setLoading] = useState(false); // Loading state for showing loading indicator
 
   // Define a function to fetch data about bookings
-  const getData = () => {
-    axios
+  const getData = async () => {
+    setLoading(true);
+    await axios
       .get(
         "https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement/" +
           id
@@ -35,6 +36,7 @@ const UserBookings = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    setLoading(false);
   };
 
   // Use useEffect to fetch data when the component mounts
