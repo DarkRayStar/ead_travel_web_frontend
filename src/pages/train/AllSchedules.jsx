@@ -135,7 +135,7 @@ const AllSchedules = () => {
                               className='text-nowrap btn-danger w-100'
                               onClick={() => handleDelete(item.id)}
                             >
-                              Delete
+                              Cancel
                             </Button>
                           </Col>
                         </Row>

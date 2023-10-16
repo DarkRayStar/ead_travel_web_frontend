@@ -60,7 +60,7 @@ const BookingUpdate = () => {
           title: 'Success!',
           text: 'Booking Updated.',
         }).then(() => {
-          navigate('/bhome');
+          navigate(`/dashboard/booking/add`);
         });
       }
     } catch (error) {
