@@ -131,6 +131,8 @@ const BookingUpdate = () => {
                               id='phoneNumber'
                               style={{ width: '600px' }}
                               className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                              pattern='^\d{10}$'
+                              title='0123456789'
                             />
                             <ErrorMessage
                               name='phoneNumber'

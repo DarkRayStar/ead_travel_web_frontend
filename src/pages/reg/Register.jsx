@@ -135,6 +135,8 @@ const Register = () => {
                           id='nic'
                           style={{ width: '90%' }}
                           className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                          pattern='^\d{9}[Vv]|\d{12}$'
+                          title='123456789V/v or 123456789012'
                         />
                         <ErrorMessage name='nic' component='div' className='text-danger' />
                       </div>
@@ -147,6 +149,8 @@ const Register = () => {
                           id='phone'
                           style={{ width: '90%' }}
                           className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                          pattern='^\d{10}$'
+                          title='0123456789'
                         />
                         <ErrorMessage name='phone' component='div' className='text-danger' />
                       </div>
@@ -171,9 +175,9 @@ const Register = () => {
                           style={{ width: '90%' }}
                           className='form-control'
                         >
-                          <option value='' label='Select an option' />
-                          <option value='officer' label='Office' />
-                          <option value='guide' label='Guide' />
+                          <option value='' label='Select an option' disabled selected />
+                          <option value='officer' label='Back Office User' />
+                          <option value='guide' label='Travel Agent' />
                         </Field>
                         <ErrorMessage name='role' component='div' className='text-danger' />
                       </div>
