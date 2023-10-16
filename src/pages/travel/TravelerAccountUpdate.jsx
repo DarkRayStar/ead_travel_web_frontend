@@ -159,6 +159,8 @@ const TravelerAccountUpdate = () => {
                               id='phone'
                               style={{ width: '400px' }}
                               className={`form-control ${dirty && isValid ? 'is-valid' : ''}`}
+                              pattern='^\d{10}$'
+                              title='0123456789'
                             />
                             <ErrorMessage name='phone' component='div' className='text-danger' />
                           </Col>
