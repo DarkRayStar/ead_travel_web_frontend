@@ -51,7 +51,7 @@ const UserBookings = () => {
     };
     axios
       .delete(
-        `http://localhost:44334/api/ReservationManagement/${itemId}`,
+        `https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement/${itemId}`,
         data
       )
       .then((response) => {
