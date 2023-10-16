@@ -67,7 +67,7 @@ const UserBookings = () => {
         Swal.fire({
           icon: "error",
           title: "Error!",
-          text: "Failed.",
+          text: error.response.data,
         });
       });
   };
