@@ -66,7 +66,7 @@ const CreateSchedule = () => {
           title: 'Success!',
           text: 'Schedule created.',
         }).then(() => {
-          navigate('/trhome');
+          navigate('/dashboard/scheduling');
         });
       }
     } catch (error) {
