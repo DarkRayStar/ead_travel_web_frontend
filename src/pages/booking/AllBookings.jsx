@@ -14,8 +14,9 @@ const AllBookings = () => {
   const [loading, setLoading] = useState(false); // loading is used to manage loading state
 
   // Define a function to fetch data from the API
-  const getData = () => {
-    axios
+  const getData = async () => {
+    setLoading(true);
+    await axios
       .get('https://ead-train-booking-web-service.azurewebsites.net/api/ReservationManagement')
       .then((response) => {
         const fetchedData = response.data; // Store fetched data in a variable
@@ -24,6 +25,8 @@ const AllBookings = () => {
       .catch((error) => {
         console.error('Error fetching data:', error); // Log an error if data fetching fails
       });
+
+    setLoading(false);
   };
 
   // useEffect hook is used to perform side effects in functional components
