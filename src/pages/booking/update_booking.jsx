@@ -60,6 +60,7 @@ const BookingUpdate = () => {
           title: 'Success!',
           text: 'Booking Updated.',
         }).then(() => {
+          //need to change this path
           navigate(`/dashboard/booking/add`);
         });
       }

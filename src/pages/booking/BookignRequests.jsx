@@ -42,51 +42,55 @@ const BookingRequests = () => {
       <Container>
         <Row className={`mt-5 mb-0 mb-md-2 mb-lg-5 px-5`}>
           {acc &&
-            acc.map((item) => (
-              <Col xl={3} lg={4} md={6} sm={12} className='mb-4' key={item.id}>
-                <Card className='shadow'>
-                  <Card.Body>
-                    <Row>
-                      <Col>
-                        <Row>
-                          <Col>First Name</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.firstName}</Col>
-                        </Row>
-                        <Row>
-                          <Col>Last Name</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.lastName}</Col>
-                        </Row>
-                        <Row>
-                          <Col>NIC:</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.nic}</Col>
-                        </Row>
-                        <Row className='pt-2'>
-                          <Col>
-                            <Button
-                              className='text-nowrap w-100 mb-2'
-                              onClick={() => navigate(`/dashboard/booking/${item.id}/${item.nic}`)}
-                            >
-                              Create Booking
-                            </Button>
-                          </Col>
-                          <Col>
-                            <Button
-                              className='text-nowrap btn-danger w-100'
-                              onClick={() => navigate(`/dashboard/booking/user/${item.nic}`)}
-                            >
-                              View Bookings
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+            acc
+              .filter((item) => item.userInfo && item.userInfo.role === 'traveler')
+              .map((item) => (
+                <Col xl={3} lg={4} md={6} sm={12} className='mb-4' key={item.id}>
+                  <Card className='shadow'>
+                    <Card.Body>
+                      <Row>
+                        <Col>
+                          <Row>
+                            <Col>First Name</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.firstName}</Col>
+                          </Row>
+                          <Row>
+                            <Col>Last Name</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.lastName}</Col>
+                          </Row>
+                          <Row>
+                            <Col>NIC:</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.nic}</Col>
+                          </Row>
+                          <Row className='pt-2'>
+                            <Col>
+                              <Button
+                                className='text-nowrap w-100 mb-2'
+                                onClick={() =>
+                                  navigate(`/dashboard/booking/${item.id}/${item.nic}`)
+                                }
+                              >
+                                Create Booking
+                              </Button>
+                            </Col>
+                            <Col>
+                              <Button
+                                className='text-nowrap btn-danger w-100'
+                                onClick={() => navigate(`/dashboard/booking/user/${item.nic}`)}
+                              >
+                                View Bookings
+                              </Button>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
         </Row>
       </Container>
     </div>

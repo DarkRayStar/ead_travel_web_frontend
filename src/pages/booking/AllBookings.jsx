@@ -40,38 +40,40 @@ const AllBookings = () => {
       <Container>
         <Row className={`mt-5 mb-0 mb-md-2 mb-lg-5 px-5`}>
           {tr &&
-            tr.map((item) => (
-              <Col xl={4} lg={4} md={4} sm={12} className='mb-4' key={item.id}>
-                <Card className='shadow p-2'>
-                  <Card.Body>
-                    <Row>
-                      <Col>
-                        <Row>
-                          <Col>NIC</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.referenceId}</Col>
-                        </Row>
-                        <Row>
-                          <Col>Name</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.travallerName}</Col>
-                        </Row>
-                        <Row>
-                          <Col>Reservation Date</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{moment(item.reservationDate).format('MMM Do YY')}</Col>
-                        </Row>
-                        <Row>
-                          <Col>Passengers</Col>
-                          <Col className='col-1'>:</Col>
-                          <Col>{item.noOfPassenger}</Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+            tr
+              // .filter((item) => item.userInfo && item.userInfo.role === 'traveler')
+              .map((item) => (
+                <Col xl={4} lg={4} md={4} sm={12} className='mb-4' key={item.id}>
+                  <Card className='shadow p-2'>
+                    <Card.Body>
+                      <Row>
+                        <Col>
+                          <Row>
+                            <Col>NIC</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.referenceId}</Col>
+                          </Row>
+                          <Row>
+                            <Col>Name</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.travallerName}</Col>
+                          </Row>
+                          <Row>
+                            <Col>Reservation Date</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{moment(item.reservationDate).format('MMM Do YY')}</Col>
+                          </Row>
+                          <Row>
+                            <Col>Passengers</Col>
+                            <Col className='col-1'>:</Col>
+                            <Col>{item.noOfPassenger}</Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
         </Row>
       </Container>
     </div>
