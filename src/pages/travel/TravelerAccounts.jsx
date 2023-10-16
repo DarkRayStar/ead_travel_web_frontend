@@ -60,14 +60,14 @@ const TravelerAccountCreate = () => {
           title: 'Success!',
           text: 'Account created.',
         }).then(() => {
-          navigate('/thome');
+          navigate('/dashboard/traveller');
         });
       }
     } catch (error) {
       Swal.fire({
         icon: 'error',
         title: 'Error!',
-        text: 'Failed.',
+        text: 'Something went wrong, Please try again.',
       });
     }
     setSubmitting(false);
