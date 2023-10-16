@@ -1,6 +1,7 @@
 // Importing necessary modules
 import axios from 'axios';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import moment from 'moment/moment';
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -22,7 +23,7 @@ const UpdateSchedule = () => {
       trainId: dt.trainId,
       trainName: dt.trainName,
       comp: dt.numberOfComponents,
-      starttime: dt.scheduleList[0].starttime,
+      starttime: moment(dt.scheduleList[0].starttime).format('YYYY-MM-DDTHH:mm:ss'),
       day: dt.scheduleList[0].day,
       start: dt.scheduleList[0].startStationName,
       end: dt.scheduleList[0].endStationName,
@@ -152,7 +153,7 @@ const UpdateSchedule = () => {
                       <div className='form-group'>
                         <Row>
                           <Col className='d-flex align-items-center'>
-                            <label htmlFor='comp'>Components</label>
+                            <label htmlFor='comp'>Compartments</label>
                           </Col>
                           <Col>
                             <Field

@@ -17,9 +17,10 @@ const AllSchedules = () => {
   const [loading, setLoading] = useState(false);
 
   // Fetch data from API
-  const getData = () => {
+  const getData = async () => {
+    setLoading(true);
     // Make a GET request to fetch train data
-    axios
+    await axios
       .get(
         "https://ead-train-booking-web-service.azurewebsites.net/api/TrainManagement"
       )
@@ -30,6 +31,7 @@ const AllSchedules = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+    setLoading(false);
   };
 
   // Component Lifecycle Hook: Runs on component mount

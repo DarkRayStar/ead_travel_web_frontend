@@ -66,7 +66,7 @@ const CreateSchedule = () => {
           title: 'Success!',
           text: 'Schedule created.',
         }).then(() => {
-          navigate('/trhome');
+          navigate('/dashboard/scheduling');
         });
       }
     } catch (error) {
@@ -143,7 +143,7 @@ const CreateSchedule = () => {
                       <div className='form-group'>
                         <Row>
                           <Col className='d-flex align-items-center'>
-                            <label htmlFor='comp'>Components</label>
+                            <label htmlFor='comp'>Compartments</label>
                           </Col>
                           <Col>
                             <Field

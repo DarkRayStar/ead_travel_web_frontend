@@ -15,8 +15,9 @@ const TravelerAccountStatusDeactive = () => {
   const navigate = useNavigate();
 
   // Function to fetch deactivated traveler account data
-  const getData = () => {
-    axios
+  const getData = async () => {
+    setLoading(true);
+    await axios
       .get(
         'https://ead-train-booking-web-service.azurewebsites.net/api/TravelerManagement?isActive=false'
       )
@@ -28,6 +29,7 @@ const TravelerAccountStatusDeactive = () => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
+    setLoading(false);
   };
 
   // Fetch data on component mount
